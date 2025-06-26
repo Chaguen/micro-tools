@@ -3,8 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Text Case Converter</title>
+    <title>Text Case Converter - 텍스트 대소문자 변환기</title>
+    
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="Text Case Converter - 텍스트 대소문자 변환기">
+    <meta name="description" content="무료 온라인 텍스트 변환 도구. UPPERCASE, lowercase, Title Case, camelCase, snake_case 등 다양한 형식으로 텍스트를 즉시 변환하세요. 5개 언어 지원.">
+    <meta name="keywords" content="text converter, case converter, uppercase, lowercase, camelCase, snake_case, 텍스트 변환, 대소문자 변환, 온라인 도구">
+    <meta name="author" content="Text Case Converter">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="Korean">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://textcaseconverter.com/">
+    <meta property="og:title" content="Text Case Converter - 텍스트 대소문자 변환기">
+    <meta property="og:description" content="무료 온라인 텍스트 변환 도구. UPPERCASE, lowercase, Title Case, camelCase, snake_case 등 다양한 형식으로 텍스트를 즉시 변환하세요.">
+    <meta property="og:image" content="https://textcaseconverter.com/preview.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://textcaseconverter.com/">
+    <meta property="twitter:title" content="Text Case Converter - 텍스트 대소문자 변환기">
+    <meta property="twitter:description" content="무료 온라인 텍스트 변환 도구. UPPERCASE, lowercase, Title Case, camelCase, snake_case 등 다양한 형식으로 변환.">
+    <meta property="twitter:image" content="https://textcaseconverter.com/preview.png">
+    
+    <!-- Additional Meta Tags -->
+    <meta name="theme-color" content="#4CAF50">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="application-name" content="Text Case Converter">
+    <meta name="msapplication-TileColor" content="#4CAF50">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://textcaseconverter.com/">
+    
+    <!-- Language Alternates -->
+    <link rel="alternate" hreflang="ko" href="https://textcaseconverter.com/">
+    <link rel="alternate" hreflang="en" href="https://textcaseconverter.com/en">
+    <link rel="alternate" hreflang="ja" href="https://textcaseconverter.com/ja">
+    <link rel="alternate" hreflang="zh" href="https://textcaseconverter.com/zh">
+    <link rel="alternate" hreflang="es" href="https://textcaseconverter.com/es">
+    <link rel="alternate" hreflang="x-default" href="https://textcaseconverter.com/">
+    
     <style>
+        :root {
+            --primary-color: #4CAF50;
+            --primary-hover: #45a049;
+            --secondary-color: #2196F3;
+            --secondary-hover: #1976D2;
+            --border-color: #e0e0e0;
+            --bg-color: #f5f5f5;
+            --text-color: #333;
+            --shadow: 0 2px 10px rgba(0,0,0,0.1);
+            --radius: 4px;
+        }
+        
         * {
             margin: 0;
             padding: 0;
@@ -13,9 +66,10 @@
         
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background-color: #f5f5f5;
-            color: #333;
+            background-color: var(--bg-color);
+            color: var(--text-color);
             line-height: 1.6;
+            min-height: 100vh;
         }
         
         .container {
@@ -28,38 +82,37 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
             margin-bottom: 30px;
+        }
+        
+        h1 {
+            font-size: clamp(24px, 5vw, 32px);
+            color: #2c3e50;
         }
         
         .language-selector {
             padding: 8px 12px;
             border: 2px solid #ddd;
-            border-radius: 4px;
+            border-radius: var(--radius);
             background: white;
             font-size: 14px;
             cursor: pointer;
             transition: border-color 0.3s;
         }
         
-        .language-selector:hover {
-            border-color: #4CAF50;
-        }
-        
+        .language-selector:hover,
         .language-selector:focus {
             outline: none;
-            border-color: #4CAF50;
+            border-color: var(--primary-color);
         }
         
-        h1 {
-            font-size: 28px;
-            color: #2c3e50;
-        }
-        
-        .textarea-wrapper {
+        .card {
             background: white;
             border-radius: 8px;
             padding: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow);
             margin-bottom: 20px;
         }
         
@@ -67,53 +120,17 @@
             width: 100%;
             min-height: 150px;
             padding: 12px;
-            border: 2px solid #e0e0e0;
-            border-radius: 4px;
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius);
             font-size: 16px;
             resize: vertical;
             font-family: inherit;
+            transition: border-color 0.3s;
         }
         
         textarea:focus {
             outline: none;
-            border-color: #4CAF50;
-        }
-        
-        .controls {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 10px;
-            margin: 20px 0;
-        }
-        
-        button {
-            padding: 12px 20px;
-            border: none;
-            border-radius: 4px;
-            background-color: #4CAF50;
-            color: white;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        
-        button:hover {
-            background-color: #45a049;
-        }
-        
-        button:active {
-            transform: translateY(1px);
-        }
-        
-        .copy-btn {
-            background-color: #2196F3;
-            width: 100%;
-            margin-top: 10px;
-        }
-        
-        .copy-btn:hover {
-            background-color: #1976D2;
+            border-color: var(--primary-color);
         }
         
         .stats {
@@ -124,16 +141,57 @@
             color: #666;
         }
         
+        .controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: var(--radius);
+            background-color: var(--primary-color);
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        button:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        button:active {
+            transform: translateY(0);
+            box-shadow: none;
+        }
+        
+        .copy-btn {
+            background-color: var(--secondary-color);
+            width: 100%;
+            margin-top: 10px;
+        }
+        
+        .copy-btn:hover {
+            background-color: var(--secondary-hover);
+        }
+        
         .notification {
             position: fixed;
             top: 20px;
             right: 20px;
-            background-color: #4CAF50;
+            background-color: var(--primary-color);
             color: white;
             padding: 12px 20px;
-            border-radius: 4px;
+            border-radius: var(--radius);
             opacity: 0;
             transition: opacity 0.3s;
+            z-index: 1000;
         }
         
         .notification.show {
@@ -141,6 +199,11 @@
         }
         
         @media (max-width: 600px) {
+            .header {
+                justify-content: center;
+                text-align: center;
+            }
+            
             .controls {
                 grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
             }
@@ -154,44 +217,177 @@
 </head>
 <body>
     <div class="container">
-        <div class="header">
+        <header class="header">
             <h1 id="pageTitle">텍스트 대소문자 변환기</h1>
-            <select class="language-selector" onchange="changeLanguage(this.value)">
+            <select class="language-selector" id="languageSelector" aria-label="Language">
                 <option value="ko">한국어</option>
                 <option value="en">English</option>
                 <option value="ja">日本語</option>
                 <option value="zh">中文</option>
                 <option value="es">Español</option>
             </select>
-        </div>
+        </header>
         
-        <div class="textarea-wrapper">
-            <textarea id="inputText" placeholder="변환할 텍스트를 입력하세요..."></textarea>
-            <div class="stats">
-                <span><span id="charLabel">문자 수</span>: <span id="charCount">0</span></span>
-                <span><span id="wordLabel">단어 수</span>: <span id="wordCount">0</span></span>
+        <main>
+            <div class="card">
+                <textarea id="inputText" placeholder="변환할 텍스트를 입력하세요..." aria-label="Input text"></textarea>
+                <div class="stats">
+                    <span><span id="charLabel">문자 수</span>: <span id="charCount">0</span></span>
+                    <span><span id="wordLabel">단어 수</span>: <span id="wordCount">0</span></span>
+                </div>
             </div>
-        </div>
-        
-        <div class="controls">
-            <button onclick="convertText('upper')" data-type="upper">대문자</button>
-            <button onclick="convertText('lower')" data-type="lower">소문자</button>
-            <button onclick="convertText('title')" data-type="title">제목 형식</button>
-            <button onclick="convertText('sentence')" data-type="sentence">문장 형식</button>
-            <button onclick="convertText('camel')" data-type="camel">캐멀케이스</button>
-            <button onclick="convertText('snake')" data-type="snake">스네이크케이스</button>
-            <button onclick="convertText('constant')" data-type="constant">상수 형식</button>
-        </div>
-        
-        <div class="textarea-wrapper">
-            <textarea id="outputText" placeholder="변환된 텍스트가 여기에 표시됩니다..." readonly></textarea>
-            <button class="copy-btn" onclick="copyToClipboard()" id="copyBtn">클립보드에 복사</button>
-        </div>
+            
+            <div class="controls" id="conversionButtons"></div>
+            
+            <div class="card">
+                <textarea id="outputText" placeholder="변환된 텍스트가 여기에 표시됩니다..." readonly aria-label="Output text"></textarea>
+                <button class="copy-btn" id="copyBtn">클립보드에 복사</button>
+            </div>
+        </main>
     </div>
     
-    <div id="notification" class="notification">텍스트가 복사되었습니다!</div>
+    <div id="notification" class="notification" role="alert">텍스트가 복사되었습니다!</div>
     
     <script>
+        // Application state
+        const app = {
+            currentLang: 'ko',
+            elements: {},
+            
+            // Initialize the application
+            init() {
+                this.cacheElements();
+                this.bindEvents();
+                this.renderButtons();
+            },
+            
+            // Cache DOM elements
+            cacheElements() {
+                this.elements = {
+                    inputText: document.getElementById('inputText'),
+                    outputText: document.getElementById('outputText'),
+                    charCount: document.getElementById('charCount'),
+                    wordCount: document.getElementById('wordCount'),
+                    charLabel: document.getElementById('charLabel'),
+                    wordLabel: document.getElementById('wordLabel'),
+                    pageTitle: document.getElementById('pageTitle'),
+                    copyBtn: document.getElementById('copyBtn'),
+                    notification: document.getElementById('notification'),
+                    languageSelector: document.getElementById('languageSelector'),
+                    conversionButtons: document.getElementById('conversionButtons')
+                };
+            },
+            
+            // Bind event listeners
+            bindEvents() {
+                this.elements.inputText.addEventListener('input', () => this.updateStats());
+                this.elements.copyBtn.addEventListener('click', () => this.copyToClipboard());
+                this.elements.languageSelector.addEventListener('change', (e) => this.changeLanguage(e.target.value));
+            },
+            
+            // Render conversion buttons
+            renderButtons() {
+                const buttons = [
+                    { type: 'upper', icon: '⬆' },
+                    { type: 'lower', icon: '⬇' },
+                    { type: 'title', icon: '📝' },
+                    { type: 'sentence', icon: '📄' },
+                    { type: 'camel', icon: '🐪' },
+                    { type: 'snake', icon: '🐍' },
+                    { type: 'constant', icon: '📌' }
+                ];
+                
+                this.elements.conversionButtons.innerHTML = buttons
+                    .map(btn => `<button data-type="${btn.type}" onclick="app.convertText('${btn.type}')">${this.getButtonText(btn.type)}</button>`)
+                    .join('');
+            },
+            
+            // Get button text for current language
+            getButtonText(type) {
+                return translations[this.currentLang].buttons[type];
+            },
+            
+            // Update character and word count
+            updateStats() {
+                const text = this.elements.inputText.value;
+                this.elements.charCount.textContent = text.length;
+                this.elements.wordCount.textContent = text.trim() ? text.trim().split(/\s+/).length : 0;
+            },
+            
+            // Convert text based on type
+            convertText(type) {
+                const text = this.elements.inputText.value;
+                if (!text) return;
+                
+                const converters = {
+                    upper: () => text.toUpperCase(),
+                    lower: () => text.toLowerCase(),
+                    title: () => text.replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()),
+                    sentence: () => text.toLowerCase().replace(/(^\s*\w|[.!?]\s*\w)/g, c => c.toUpperCase()),
+                    camel: () => text.toLowerCase()
+                        .replace(/[^a-zA-Z0-9]+(.)/g, (m, chr) => chr.toUpperCase())
+                        .replace(/^[A-Z]/, c => c.toLowerCase()),
+                    snake: () => text
+                        .replace(/[A-Z]/g, letter => `_${letter.toLowerCase()}`)
+                        .replace(/[^a-zA-Z0-9]+/g, '_')
+                        .replace(/^_+|_+$/g, '')
+                        .replace(/_+/g, '_')
+                        .toLowerCase(),
+                    constant: () => text
+                        .replace(/[a-z]/g, letter => letter.toUpperCase())
+                        .replace(/[^A-Z0-9]+/g, '_')
+                        .replace(/^_+|_+$/g, '')
+                        .replace(/_+/g, '_')
+                };
+                
+                this.elements.outputText.value = converters[type]();
+            },
+            
+            // Copy text to clipboard
+            async copyToClipboard() {
+                const text = this.elements.outputText.value;
+                if (!text) return;
+                
+                try {
+                    if (navigator.clipboard) {
+                        await navigator.clipboard.writeText(text);
+                    } else {
+                        this.elements.outputText.select();
+                        document.execCommand('copy');
+                    }
+                    this.showNotification();
+                } catch (err) {
+                    console.error('Failed to copy:', err);
+                }
+            },
+            
+            // Show copy notification
+            showNotification() {
+                this.elements.notification.textContent = translations[this.currentLang].notification;
+                this.elements.notification.classList.add('show');
+                setTimeout(() => this.elements.notification.classList.remove('show'), 2000);
+            },
+            
+            // Change language
+            changeLanguage(lang) {
+                this.currentLang = lang;
+                const t = translations[lang];
+                
+                // Update UI text
+                this.elements.pageTitle.textContent = t.title;
+                this.elements.inputText.placeholder = t.inputPlaceholder;
+                this.elements.outputText.placeholder = t.outputPlaceholder;
+                this.elements.charLabel.textContent = t.charLabel;
+                this.elements.wordLabel.textContent = t.wordLabel;
+                this.elements.copyBtn.textContent = t.copyBtn;
+                document.documentElement.lang = lang;
+                
+                // Update buttons
+                this.renderButtons();
+            }
+        };
+        
+        // Translations
         const translations = {
             ko: {
                 title: '텍스트 대소문자 변환기',
@@ -285,100 +481,44 @@
             }
         };
         
-        let currentLang = 'ko';
-        
-        const inputText = document.getElementById('inputText');
-        const outputText = document.getElementById('outputText');
-        const charCount = document.getElementById('charCount');
-        const wordCount = document.getElementById('wordCount');
-        const notification = document.getElementById('notification');
-        
-        inputText.addEventListener('input', updateStats);
-        
-        function updateStats() {
-            const text = inputText.value;
-            charCount.textContent = text.length;
-            wordCount.textContent = text.trim() ? text.trim().split(/\s+/).length : 0;
+        // Initialize app when DOM is ready
+        document.addEventListener('DOMContentLoaded', () => app.init());
+    </script>
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Text Case Converter",
+        "alternateName": "텍스트 대소문자 변환기",
+        "url": "https://textcaseconverter.com/",
+        "description": "무료 온라인 텍스트 변환 도구. UPPERCASE, lowercase, Title Case, camelCase, snake_case 등 다양한 형식으로 텍스트를 즉시 변환하세요.",
+        "applicationCategory": "UtilityApplication",
+        "operatingSystem": "Any",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "featureList": [
+            "UPPERCASE conversion",
+            "lowercase conversion",
+            "Title Case conversion",
+            "Sentence case conversion",
+            "camelCase conversion",
+            "snake_case conversion",
+            "CONSTANT_CASE conversion",
+            "Multi-language support (Korean, English, Japanese, Chinese, Spanish)",
+            "Character and word count",
+            "Copy to clipboard"
+        ],
+        "inLanguage": ["ko", "en", "ja", "zh", "es"],
+        "creator": {
+            "@type": "Organization",
+            "name": "Text Case Converter"
         }
-        
-        function convertText(type) {
-            const text = inputText.value;
-            if (!text) return;
-            
-            let result = '';
-            
-            switch(type) {
-                case 'upper':
-                    result = text.toUpperCase();
-                    break;
-                case 'lower':
-                    result = text.toLowerCase();
-                    break;
-                case 'title':
-                    result = text.replace(/\w\S*/g, txt => 
-                        txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
-                    );
-                    break;
-                case 'sentence':
-                    result = text.toLowerCase().replace(/(^\s*\w|[.!?]\s*\w)/g, c => c.toUpperCase());
-                    break;
-                case 'camel':
-                    result = text.toLowerCase()
-                        .replace(/[^a-zA-Z0-9]+(.)/g, (m, chr) => chr.toUpperCase())
-                        .replace(/^[A-Z]/, c => c.toLowerCase());
-                    break;
-                case 'snake':
-                    result = text.toLowerCase()
-                        .replace(/[^a-zA-Z0-9]+/g, '_')
-                        .replace(/([A-Z])/g, '_$1')
-                        .replace(/^_+|_+$/g, '')
-                        .replace(/_+/g, '_')
-                        .toLowerCase();
-                    break;
-                case 'constant':
-                    result = text.toUpperCase()
-                        .replace(/[^A-Z0-9]+/g, '_')
-                        .replace(/^_+|_+$/g, '')
-                        .replace(/_+/g, '_');
-                    break;
-            }
-            
-            outputText.value = result;
-        }
-        
-        function copyToClipboard() {
-            if (!outputText.value) return;
-            
-            outputText.select();
-            document.execCommand('copy');
-            
-            notification.textContent = translations[currentLang].notification;
-            notification.classList.add('show');
-            setTimeout(() => {
-                notification.classList.remove('show');
-            }, 2000);
-        }
-        
-        function changeLanguage(lang) {
-            currentLang = lang;
-            const t = translations[lang];
-            
-            document.getElementById('pageTitle').textContent = t.title;
-            document.getElementById('inputText').placeholder = t.inputPlaceholder;
-            document.getElementById('outputText').placeholder = t.outputPlaceholder;
-            document.getElementById('charLabel').textContent = t.charLabel;
-            document.getElementById('wordLabel').textContent = t.wordLabel;
-            document.getElementById('copyBtn').textContent = t.copyBtn;
-            document.documentElement.lang = lang;
-            
-            // Update button texts
-            document.querySelectorAll('.controls button').forEach(btn => {
-                const type = btn.getAttribute('data-type');
-                if (type && t.buttons[type]) {
-                    btn.textContent = t.buttons[type];
-                }
-            });
-        }
+    }
     </script>
 </body>
 </html>
